@@ -1,0 +1,4 @@
+com/orangehrm/pages/BasePage.class
+com/orangehrm/pages/LoginPage.class
+com/orangehrm/utils/ConfigReader.class
+com/orangehrm/utils/DriverFactory.class
