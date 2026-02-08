@@ -20,6 +20,12 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//h6[contains(@class, 'oxd-topbar-header-breadcrumb-module')]")
     private WebElement dashboardHeader;
 
+    @FindBy(xpath = "//span[contains(@class, 'oxd-input-field-error-message')]")
+    private WebElement requiredFieldError;
+
+    @FindBy(xpath = "//p[contains(@class, 'orangehrm-login-forgot')]/a")
+    private WebElement forgotPasswordLink;
+
     public void enterUsername(String username) {
         sendKeys(usernameInput, username);
     }
@@ -44,5 +50,13 @@ public class LoginPage extends BasePage {
 
     public boolean isDashboardDisplayed() {
         return dashboardHeader.isDisplayed();
+    }
+
+    public boolean isRequiredFieldErrorDisplayed() {
+        return isDisplayed(requiredFieldError);
+    }
+
+    public void clickForgotPassword() {
+        click(forgotPasswordLink);
     }
 }

@@ -62,4 +62,20 @@ public class LoginSteps {
     public void i_should_see_an_error_message(String expectedMessage) {
         Assert.assertEquals(loginPage.getErrorMessage(), expectedMessage);
     }
+
+    @Then("I should see validation error for required fields")
+    public void i_should_see_validation_error_for_required_fields() {
+        Assert.assertTrue(loginPage.isRequiredFieldErrorDisplayed(), "Required field error is not displayed!");
+    }
+
+    @When("I click on forgot password link")
+    public void i_click_on_forgot_password_link() {
+        loginPage.clickForgotPassword();
+    }
+
+    @Then("I should be redirected to password reset page")
+    public void i_should_be_redirected_to_password_reset_page() {
+        Assert.assertTrue(driver.getCurrentUrl().contains("requestPasswordResetCode"),
+                "Not redirected to password reset page!");
+    }
 }
