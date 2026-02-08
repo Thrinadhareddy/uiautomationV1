@@ -11,7 +11,7 @@ public class LoginPage extends BasePage {
     @FindBy(name = "password")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(css = "button[type='submit']")
     private WebElement loginButton;
 
     @FindBy(xpath = "//p[contains(@class, 'oxd-alert-content-text')]")
@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//span[contains(@class, 'oxd-input-field-error-message')]")
     private WebElement requiredFieldError;
 
-    @FindBy(xpath = "//p[contains(@class, 'orangehrm-login-forgot')]/a")
+    @FindBy(xpath = "//p[contains(@class, 'orangehrm-login-forgot-header')]")
     private WebElement forgotPasswordLink;
 
     public void enterUsername(String username) {
@@ -49,7 +49,7 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isDashboardDisplayed() {
-        return dashboardHeader.isDisplayed();
+        return isDisplayed(dashboardHeader);
     }
 
     public boolean isRequiredFieldErrorDisplayed() {

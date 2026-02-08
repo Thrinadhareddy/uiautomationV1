@@ -13,7 +13,7 @@
     <cucumber.version>7.20.1</cucumber.version>
     <testng.version>7.10.2</testng.version>
     <allure.version>2.29.0</allure.version>
-    <aspectj.version>1.9.22</aspectj.version>
+    <aspectj.version>1.9.25</aspectj.version>
   </properties>
 
   <dependencies>

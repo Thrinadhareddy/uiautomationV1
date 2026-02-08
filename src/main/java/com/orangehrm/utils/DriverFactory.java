@@ -24,6 +24,11 @@ public class DriverFactory {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--remote-allow-origins=*");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                    options.addArguments("--disable-gpu");
+                    options.addArguments("--window-size=1920,1080");
                     if (Boolean.parseBoolean(headless)) {
                         options.addArguments("--headless");
                     }

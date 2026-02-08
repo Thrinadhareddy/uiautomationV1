@@ -38,7 +38,8 @@ public class LoginSteps {
 
     @When("I enter valid username {string} and password {string}")
     public void i_enter_valid_username_and_password(String username, String password) {
-        loginPage.login(username, password);
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
     }
 
     // Reusing the same step for invalid/valid as the action is the same
