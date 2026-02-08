@@ -1,6 +1,14 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="OrangeHRM Test Suite" verbose="1">
-    <test name="All Tests">
+    <test name="Chrome Latest">
+        <parameter name="chromeVersion" value=""/>
+        <classes>
+            <class name="com.orangehrm.runners.TestRunner"/>
+        </classes>
+    </test>
+
+    <test name="Chrome 120">
+        <parameter name="chromeVersion" value="120"/>
         <classes>
             <class name="com.orangehrm.runners.TestRunner"/>
         </classes>

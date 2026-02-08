@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import org.testng.Reporter;
 import java.time.Duration;
 
 public class DriverFactory {
@@ -29,6 +30,25 @@ public class DriverFactory {
                     options.addArguments("--disable-dev-shm-usage");
                     options.addArguments("--disable-gpu");
                     options.addArguments("--window-size=1920,1080");
+
+                    // Try getting version from TestNG parameter first
+                    String chromeVersion = null;
+                    try {
+                        chromeVersion = org.testng.Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest()
+                                .getParameter("chromeVersion");
+                    } catch (Exception e) {
+                        // Ignore if not running via TestNG XML or context unavailable
+                    }
+
+                    // Fallback to config.properties
+                    if (chromeVersion == null || chromeVersion.isEmpty()) {
+                        chromeVersion = ConfigReader.getProperty("chromeVersion");
+                    }
+
+                    if (chromeVersion != null && !chromeVersion.isEmpty()) {
+                        options.setBrowserVersion(chromeVersion);
+                    }
+
                     if (Boolean.parseBoolean(headless)) {
                         options.addArguments("--headless");
                     }
